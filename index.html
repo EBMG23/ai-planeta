@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agencia Planeta | Impulsa tu TikTok LIVE</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.0/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/space-grotesk@5.0.0/index.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root {
+    --pink: #ff0050;
+    --cyan: #00f2ea;
+    --dark: #010101;
+  }
+  * { font-family: 'Inter', sans-serif; }
+  h1, h2, h3, .brand { font-family: 'Space Grotesk', sans-serif; }
+  
+  body {
+    background: #010101;
+    color: #fff;
+    overflow-x: hidden;
+  }
+  
+  .bg-grid {
+    background-image: 
+      linear-gradient(rgba(255,0,80,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,242,234,0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+  
+  .gradient-text {
+    background: linear-gradient(90deg, #ff0050, #00f2ea);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .btn-primary {
+    background: linear-gradient(90deg, #ff0050, #ff007f);
+    transition: all 0.3s;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(255,0,80,0.5);
+  }
+  
+  .btn-whatsapp {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    transition: all 0.3s;
+    cursor: pointer;
+    color: white;
+    border: none;
+  }
+  .btn-whatsapp:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(37,211,102,0.5);
+  }
+  .btn-whatsapp:active {
+    transform: scale(0.97);
+  }
+  
+  .btn-copy {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: all 0.3s;
+    color: white;
+  }
+  .btn-copy:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(0,242,234,0.5);
+  }
+  .btn-copy.copied {
+    background: rgba(37,211,102,0.2);
+    border-color: #25D366;
+    color: #25D366;
+  }
+  
+  .card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s;
+  }
+  .card:hover {
+    border-color: rgba(0,242,234,0.4);
+    transform: translateY(-4px);
+  }
+  
+  .float { animation: float 6s ease-in-out infinite; }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  .pulse-ring {
+    animation: pulseRing 2s infinite;
+  }
+  @keyframes pulseRing {
+    0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.7); }
+    70% { box-shadow: 0 0 0 20px rgba(37,211,102,0); }
+    100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+  }
+  
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    z-index: 0;
+  }
+  
+  .chat-window {
+    background: linear-gradient(180deg, #0a0a0a 0%, #111 100%);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .msg-bot {
+    background: linear-gradient(135deg, rgba(255,0,80,0.15), rgba(0,242,234,0.1));
+    border: 1px solid rgba(0,242,234,0.2);
+  }
+  
+  .msg-user {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .typing-dot {
+    animation: typing 1.4s infinite;
+  }
+  .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes typing {
+    0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+    30% { opacity: 1; transform: translateY(-4px); }
+  }
+  
+  .faq-item.active .faq-answer {
+    max-height: 500px;
+    padding-top: 16px;
+  }
+  .faq-item.active .faq-icon {
+    transform: rotate(45deg);
+  }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+  }
+  .faq-icon {
+    transition: transform 0.3s;
+  }
+  
+  .marquee {
+    display: flex;
+    animation: marquee 30s linear infinite;
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  
+  .shine {
+    position: relative;
+    overflow: hidden;
+  }
+  .shine::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation: shine 3s infinite;
+  }
+  @keyframes shine {
+    0% { left: -100%; }
+    50%, 100% { left: 100%; }
+  }
+  
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s;
+  }
+  .scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .live-dot {
+    width: 8px; height: 8px;
+    background: #ff0050;
+    border-radius: 50%;
+    animation: livePulse 1.5s infinite;
+  }
+  @keyframes livePulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+  
+  .phone-number {
+    font-family: 'Space Grotesk', monospace;
+    letter-spacing: 1px;
+  }
+  
+  .contact-card {
+    background: linear-gradient(135deg, rgba(37,211,102,0.08), rgba(37,211,102,0.02));
+    border: 1px solid rgba(37,211,102,0.25);
+    transition: all 0.3s;
+  }
+  .contact-card:hover {
+    border-color: rgba(37,211,102,0.5);
+    transform: translateY(-4px);
+  }
+  
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #0a0a0a; }
+  ::-webkit-scrollbar-thumb { background: linear-gradient(#ff0050, #00f2ea); border-radius: 4px; }
+
+  .toast {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: #25D366;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0;
+    transition: all 0.3s;
+    z-index: 200;
+    pointer-events: none;
+    box-shadow: 0 10px 30px rgba(37,211,102,0.4);
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* Mic button styles */
+  .mic-btn {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: all 0.3s;
+  }
+  .mic-btn:hover {
+    background: rgba(255,255,255,0.1);
+  }
+  .mic-btn.listening {
+    background: linear-gradient(135deg, #ff0050, #ff007f);
+    border-color: #ff0050;
+    animation: micPulse 1s infinite;
+  }
+  @keyframes micPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255,0,80,0.7); }
+    50% { box-shadow: 0 0 0 12px rgba(255,0,80,0); }
+  }
+
+  /* Voice toggle */
+  .voice-toggle {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: all 0.3s;
+  }
+  .voice-toggle.active {
+    background: rgba(0,242,234,0.15);
+    border-color: rgba(0,242,234,0.5);
+    color: #00f2ea;
+  }
+
+  .voice-wave {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    height: 20px;
+  }
+  .voice-wave span {
+    width: 3px;
+    background: #ff0050;
+    border-radius: 2px;
+    animation: wave 1s ease-in-out infinite;
+  }
+  .voice-wave span:nth-child(1) { animation-delay: 0s; height: 8px; }
+  .voice-wave span:nth-child(2) { animation-delay: 0.1s; height: 14px; }
+  .voice-wave span:nth-child(3) { animation-delay: 0.2s; height: 20px; }
+  .voice-wave span:nth-child(4) { animation-delay: 0.3s; height: 14px; }
+  .voice-wave span:nth-child(5) { animation-delay: 0.4s; height: 8px; }
+  @keyframes wave {
+    0%, 100% { transform: scaleY(0.5); }
+    50% { transform: scaleY(1.2); }
+  }
+
+  .speaking-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    color: #00f2ea;
+    margin-top: 4px;
+  }
+  .speaking-indicator span {
+    width: 3px;
+    height: 10px;
+    background: #00f2ea;
+    border-radius: 2px;
+    animation: speakWave 0.8s ease-in-out infinite;
+  }
+  .speaking-indicator span:nth-child(2) { animation-delay: 0.1s; }
+  .speaking-indicator span:nth-child(3) { animation-delay: 0.2s; }
+  @keyframes speakWave {
+    0%, 100% { transform: scaleY(0.3); }
+    50% { transform: scaleY(1); }
+  }
+
+  .no-support-banner {
+    background: linear-gradient(90deg, rgba(255,165,0,0.15), rgba(255,165,0,0.05));
+    border: 1px solid rgba(255,165,0,0.3);
+    color: #ffa500;
+  }
+</style>
+</head>
+<body class="bg-grid">
+
+<!-- NAVBAR -->
+<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-black/60 border-b border-white/5">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="relative">
+        <svg width="40" height="40" viewBox="0 0 100 100" class="rounded-xl">
+          <circle cx="50" cy="50" r="48" fill="#6B5B7B"/>
+          <circle cx="50" cy="50" r="35" fill="#4A90E2"/>
+          <ellipse cx="50" cy="50" rx="35" ry="12" fill="none" stroke="#3A7BC8" stroke-width="2"/>
+          <path d="M 20 50 Q 50 30 80 50 Q 50 70 20 50" fill="#5BA0F0" opacity="0.6"/>
+          <text x="50" y="58" font-family="cursive" font-size="22" fill="#FF6B9D" text-anchor="middle" font-weight="bold">Planeta</text>
+          <rect x="30" y="62" width="40" height="8" fill="#FF6B9D" rx="2"/>
+          <text x="50" y="69" font-family="sans-serif" font-size="7" fill="#4A90E2" text-anchor="middle" font-weight="bold">Planeta</text>
+          <circle cx="15" cy="20" r="2" fill="white"/>
+          <circle cx="85" cy="25" r="1.5" fill="white"/>
+          <circle cx="20" cy="80" r="1.5" fill="white"/>
+          <circle cx="80" cy="75" r="2" fill="white"/>
+        </svg>
+        <div class="absolute -top-1 -right-1 live-dot"></div>
+      </div>
+      <div>
+        <div class="brand font-bold text-lg leading-none">Agencia Planeta</div>
+        <div class="text-[10px] text-cyan-400 tracking-widest">TikTok LIVE AGENCY</div>
+      </div>
+    </div>
+    <div class="hidden md:flex items-center gap-8 text-sm">
+      <a href="#beneficios" class="hover:text-cyan-400 transition">Beneficios</a>
+      <a href="#pagos" class="hover:text-cyan-400 transition">Pagos</a>
+      <a href="#requisitos" class="hover:text-cyan-400 transition">Requisitos</a>
+      <a href="#chat" class="hover:text-cyan-400 transition">Asistente IA</a>
+    </div>
+    <button onclick="scrollToContact()" class="btn-primary px-5 py-2.5 rounded-full text-sm font-semibold shine">Unirme ahora</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="relative pt-32 pb-20 px-6 overflow-hidden">
+  <div class="blob w-96 h-96 bg-pink-500 -top-20 -left-20"></div>
+  <div class="blob w-96 h-96 bg-cyan-400 top-40 -right-20"></div>
+  
+  <div class="max-w-7xl mx-auto relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+    <div>
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs mb-6">
+        <span class="live-dot"></span>
+        <span class="text-cyan-400 font-semibold tracking-wider">ASISTENTE IA 24/7 ACTIVO</span>
+      </div>
+      <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6">
+        Transforma tus <span class="gradient-text">LIVEs</span> en ingresos reales
+      </h1>
+      <p class="text-lg text-gray-300 mb-8 max-w-xl">
+        Somos la agencia líder en TikTok LIVE. Impulsamos a creadores de las ligas <b class="text-white">D1, C y B</b> para profesionalizar su contenido, monetizar y escalar rápidamente.
+      </p>
+      <div class="flex flex-wrap gap-4 mb-10">
+        <button onclick="scrollToContact()" class="btn-primary px-8 py-4 rounded-full font-bold shine">🚀 Empezar gratis</button>
+        <a href="#chat" class="px-8 py-4 rounded-full font-bold border border-white/20 hover:bg-white/5 transition inline-block">💬 Hablar con IA</a>
+      </div>
+      <div class="flex items-center gap-6 text-sm text-gray-400">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+          100% GRATIS
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+          Pagos en USD
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+          PayPal seguro
+        </div>
+      </div>
+    </div>
+    
+    <div class="relative float">
+      <div class="absolute inset-0 bg-gradient-to-br from-pink-500/20 to-cyan-400/20 blur-3xl"></div>
+      <div class="relative chat-window rounded-3xl p-6 max-w-md mx-auto">
+        <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-pink-500 to-cyan-400 flex items-center justify-center font-bold">🤖</div>
+          <div>
+            <div class="font-bold text-sm">Asistente IA Planeta</div>
+            <div class="text-xs text-green-400 flex items-center gap-1"><span class="live-dot"></span> En línea</div>
+          </div>
+        </div>
+        <div class="space-y-3 py-4">
+          <div class="msg-bot rounded-2xl rounded-tl-sm p-3 text-sm">¡Hola! 👋 Soy el Asistente de IA de <b>Agencia Planeta</b>.</div>
+          <div class="msg-bot rounded-2xl rounded-tl-sm p-3 text-sm">¿Quieres saber cómo ganar entre <b class="text-cyan-400">$50 y $100 USD</b> mensuales con tus LIVEs?</div>
+          <div class="msg-user rounded-2xl rounded-tr-sm p-3 text-sm ml-auto max-w-[80%]">¡Sí! ¿Cómo empiezo?</div>
+          <div class="msg-bot rounded-2xl rounded-tl-sm p-3 text-sm">¡Es <b class="text-pink-400">100% GRATIS</b>! Solo necesitas ser +18 y tener PayPal 💳</div>
+        </div>
+        <div class="flex gap-2">
+          <input type="text" placeholder="Escribe un mensaje..." class="flex-1 bg-white/5 border border-white/10 rounded-full px-4 py-2 text-sm outline-none focus:border-cyan-400/50">
+          <button class="w-10 h-10 rounded-full bg-gradient-to-br from-pink-500 to-cyan-400 flex items-center justify-center">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS MARQUEE -->
+<section class="py-8 border-y border-white/5 bg-black/40 overflow-hidden">
+  <div class="marquee whitespace-nowrap">
+    <div class="flex gap-16 px-8 text-2xl font-bold brand">
+      <span class="text-pink-500">★ CREADORES ACTIVOS</span>
+      <span class="text-cyan-400">★ PAGOS SEGUROS</span>
+      <span class="text-pink-500">★ LIGAS D1 • C • B</span>
+      <span class="text-cyan-400">★ 100K DIAMANTES = $$$</span>
+      <span class="text-pink-500">★ SIN COSTOS OCULTOS</span>
+      <span class="text-cyan-400">★ SOPORTE 24/7</span>
+    </div>
+    <div class="flex gap-16 px-8 text-2xl font-bold brand">
+      <span class="text-pink-500">★ CREADORES ACTIVOS</span>
+      <span class="text-cyan-400">★ PAGOS SEGUROS</span>
+      <span class="text-pink-500">★ LIGAS D1 • C • B</span>
+      <span class="text-cyan-400">★ 100K DIAMANTES = $$$</span>
+      <span class="text-pink-500">★ SIN COSTOS OCULTOS</span>
+      <span class="text-cyan-400">★ SOPORTE 24/7</span>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFICIOS -->
+<section id="beneficios" class="py-24 px-6 relative">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 scroll-reveal">
+      <div class="text-cyan-400 text-sm font-bold tracking-widest mb-3">💎 BENEFICIOS EXCLUSIVOS</div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-4">Todo lo que obtienes <span class="gradient-text">sin pagar nada</span></h2>
+      <p class="text-gray-400 max-w-2xl mx-auto">Impulso perfecto para creadores de ligas D1, C y B que quieren subir de nivel y proteger su cuenta contra baneos.</p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="card rounded-2xl p-6 scroll-reveal">
+        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-pink-500/20 to-pink-500/5 flex items-center justify-center text-3xl mb-4">🎓</div>
+        <h3 class="text-xl font-bold mb-2">Asesoría y Capacitación</h3>
+        <p class="text-gray-400 text-sm">Estrategias probadas para retener audiencia y aumentar la recepción de regalos en cada LIVE.</p>
+      </div>
+      
+      <div class="card rounded-2xl p-6 scroll-reveal">
+        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-400/20 to-cyan-400/5 flex items-center justify-center text-3xl mb-4">⚔️</div>
+        <h3 class="text-xl font-bold mb-2">Batallas Oficiales</h3>
+        <p class="text-gray-400 text-sm">Participación en dinámicas exclusivas de TikTok para escalar ligas rápidamente y ganar visibilidad.</p>
+      </div>
+      
+      <div class="card rounded-2xl p-6 scroll-reveal">
+        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-pink-500/20 to-cyan-400/5 flex items-center justify-center text-3xl mb-4">🛡️</div>
+        <h3 class="text-xl font-bold mb-2">Soporte Personalizado</h3>
+        <p class="text-gray-400 text-sm">Equipo dedicado a resolver baneos, problemas de cuenta y optimización de tu perfil al máximo.</p>
+      </div>
+      
+      <div class="card rounded-2xl p-6 scroll-reveal">
+        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-400/20 to-pink-500/5 flex items-center justify-center text-3xl mb-4">🤝</div>
+        <h3 class="text-xl font-bold mb-2">Comunidad Creadora</h3>
+        <p class="text-gray-400 text-sm">Conexión con otros creadores para colaboraciones, battles y crecimiento mutuo en la plataforma.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAGOS -->
+<section id="pagos" class="py-24 px-6 relative">
+  <div class="blob w-96 h-96 bg-pink-500 top-20 -right-20"></div>
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="text-center mb-16 scroll-reveal">
+      <div class="text-pink-400 text-sm font-bold tracking-widest mb-3">💵 SISTEMA DE PAGOS</div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-4">Gana en <span class="gradient-text">dólares reales</span></h2>
+      <p class="text-gray-400 max-w-2xl mx-auto">Pagos mensuales, transparentes y directos a tu cuenta de PayPal. Sin letras pequeñas.</p>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-6 mb-12">
+      <div class="card rounded-2xl p-8 text-center scroll-reveal">
+        <div class="text-sm text-gray-400 mb-2">META MENSUAL</div>
+        <div class="text-5xl font-bold brand gradient-text mb-2">100K</div>
+        <div class="text-pink-400 font-semibold">Diamantes</div>
+      </div>
+      <div class="card rounded-2xl p-8 text-center scroll-reveal relative overflow-hidden">
+        <div class="absolute top-3 right-3 bg-pink-500 text-[10px] px-2 py-1 rounded-full font-bold">POPULAR</div>
+        <div class="text-sm text-gray-400 mb-2">PAGO MENSUAL</div>
+        <div class="text-5xl font-bold brand gradient-text mb-2">$50-100</div>
+        <div class="text-cyan-400 font-semibold">USD en PayPal</div>
+      </div>
+      <div class="card rounded-2xl p-8 text-center scroll-reveal">
+        <div class="text-sm text-gray-400 mb-2">FRECUENCIA</div>
+        <div class="text-5xl font-bold brand gradient-text mb-2">Mensual</div>
+        <div class="text-pink-400 font-semibold">100% Seguro</div>
+      </div>
+    </div>
+    
+    <div class="card rounded-3xl p-8 md:p-12 scroll-reveal">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h3 class="text-3xl font-bold mb-4">¿Cómo funciona?</h3>
+          <div class="space-y-4">
+            <div class="flex gap-4">
+              <div class="w-10 h-10 rounded-full bg-pink-500/20 border border-pink-500/40 flex items-center justify-center font-bold text-pink-400 flex-shrink-0">1</div>
+              <div>
+                <div class="font-bold">Haz tus LIVEs regularmente</div>
+                <div class="text-sm text-gray-400">Sé constante y aplica nuestras estrategias</div>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-10 h-10 rounded-full bg-cyan-400/20 border border-cyan-400/40 flex items-center justify-center font-bold text-cyan-400 flex-shrink-0">2</div>
+              <div>
+                <div class="font-bold">Alcanza 100K diamantes</div>
+                <div class="text-sm text-gray-400">La meta mensual para activar tu pago</div>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-10 h-10 rounded-full bg-pink-500/20 border border-pink-500/40 flex items-center justify-center font-bold text-pink-400 flex-shrink-0">3</div>
+              <div>
+                <div class="font-bold">Recibe tu pago en PayPal</div>
+                <div class="text-sm text-gray-400">Entre <b class="text-white">$50 y $100 USD</b> cada mes</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="bg-gradient-to-br from-pink-500/10 to-cyan-400/10 rounded-2xl p-8 border border-white/10">
+            <div class="text-xs text-gray-400 mb-2">PAGO CONFIRMADO</div>
+            <div class="text-4xl font-bold brand mb-1">+$75.00 USD</div>
+            <div class="text-sm text-green-400 mb-4">✓ Transferido a PayPal</div>
+            <div class="pt-4 border-t border-white/10 space-y-2 text-xs text-gray-400">
+              <div class="flex justify-between"><span>Creador:</span><span class="text-white">@creator_tiktok</span></div>
+              <div class="flex justify-between"><span>Liga:</span><span class="text-cyan-400">C</span></div>
+              <div class="flex justify-between"><span>Diamantes:</span><span class="text-pink-400">100,000 💎</span></div>
+              <div class="flex justify-between"><span>Fecha:</span><span class="text-white">22 Nov 2026</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REQUISITOS -->
+<section id="requisitos" class="py-24 px-6 relative">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 scroll-reveal">
+      <div class="text-cyan-400 text-sm font-bold tracking-widest mb-3">📋 REQUISITOS</div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-4">Solo necesitas <span class="gradient-text">4 cosas</span></h2>
+      <p class="text-gray-400 max-w-2xl mx-auto">Sin costos ocultos, sin contratos complicados. Si cumples esto, ya estás listo.</p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="card rounded-2xl p-6 scroll-reveal">
+        <div class="text-5xl mb-4">🔥</div>
+        <h3 class="text-lg font-bold mb-2">Ganas de crecer</h3>
+        <p class="text-gray-400 text-sm">Ser constante en tus LIVEs y tener actitud para mejorar cada día.</p>
+      </div>
+      <div class="card rounded-2xl p-6 scroll-reveal">
+        <div class="text-5xl mb-4">🎂</div>
+        <h3 class="text-lg font-bold mb-2">Mayor de 18 años</h3>
+        <p class="text-gray-400 text-sm">Requisito legal indispensable para participar en la agencia.</p>
+      </div>
+      <div class="card rounded-2xl p-6 scroll-reveal">
+        <div class="text-5xl mb-4">💳</div>
+        <h3 class="text-lg font-bold mb-2">Cuenta PayPal</h3>
+        <p class="text-gray-400 text-sm">Activa y verificada para recibir tus pagos mensuales en USD.</p>
+      </div>
+      <div class="card rounded-2xl p-6 scroll-reveal relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-green-500/10 to-transparent"></div>
+        <div class="relative">
+          <div class="text-5xl mb-4">✨</div>
+          <h3 class="text-lg font-bold mb-2">¡COSTO CERO!</h3>
+          <p class="text-gray-400 text-sm">Entrar a la agencia es <b class="text-green-400">100% GRATIS</b>. No pagas nada.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAT INTERACTIVO CON VOZ -->
+<section id="chat" class="py-24 px-6 relative">
+  <div class="blob w-96 h-96 bg-cyan-400 top-40 -left-20"></div>
+  <div class="max-w-4xl mx-auto relative z-10">
+    <div class="text-center mb-12 scroll-reveal">
+      <div class="text-pink-400 text-sm font-bold tracking-widest mb-3">🤖 ASISTENTE IA CON VOZ</div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-4">Habla con nuestra <span class="gradient-text">IA oficial</span></h2>
+      <p class="text-gray-400">Pregúntale por voz y recibe respuestas habladas al instante. 🎙️</p>
+    </div>
+    
+    <!-- Browser support notice -->
+    <div id="voiceSupportNotice" class="hidden no-support-banner rounded-xl p-4 mb-6 text-sm text-center">
+      ⚠️ Tu navegador no soporta reconocimiento de voz. Usa <b>Chrome</b> o <b>Edge</b> para la mejor experiencia.
+    </div>
+    
+    <div class="chat-window rounded-3xl p-6 md:p-8 scroll-reveal">
+      <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-4 flex-wrap gap-3">
+        <div class="flex items-center gap-3">
+          <div class="relative">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-cyan-400 flex items-center justify-center text-2xl">🤖</div>
+            <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-400 rounded-full border-2 border-black"></div>
+          </div>
+          <div>
+            <div class="font-bold">Asistente IA de Agencia Planeta</div>
+            <div class="text-xs text-green-400">En línea · Responde al instante</div>
+          </div>
+        </div>
+        <button id="voiceToggle" onclick="toggleVoiceResponses()" class="voice-toggle px-3 py-2 rounded-full text-xs font-semibold flex items-center gap-2" title="Activar/desactivar respuestas por voz">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+          <span id="voiceToggleText">Voz OFF</span>
+        </button>
+      </div>
+      
+      <div id="chatMessages" class="space-y-3 mb-6 min-h-[300px] max-h-[400px] overflow-y-auto pr-2">
+        <div class="msg-bot rounded-2xl rounded-tl-sm p-4 text-sm">
+          ¡Hola! 👋 Soy el <b>Asistente de IA de Agencia Planeta</b>. Es un gusto saludarte.<br><br>
+          ¿En qué puedo ayudarte hoy? Puedes preguntarme por escrito o tocar el 🎙️ para hablar conmigo.
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <button onclick="askQuestion('beneficios')" class="px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-xs transition">💎 Beneficios</button>
+          <button onclick="askQuestion('pagos')" class="px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-xs transition">💵 ¿Cuánto pagan?</button>
+          <button onclick="askQuestion('requisitos')" class="px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-xs transition">📋 Requisitos</button>
+          <button onclick="askQuestion('unirme')" class="px-4 py-2 rounded-full bg-pink-500/20 hover:bg-pink-500/30 border border-pink-500/40 text-xs transition">🚀 Quiero unirme</button>
+        </div>
+      </div>
+      
+      <!-- Listening indicator -->
+      <div id="listeningIndicator" class="hidden mb-4 px-4 py-3 rounded-xl bg-pink-500/10 border border-pink-500/30">
+        <div class="flex items-center gap-3">
+          <div class="voice-wave">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="text-sm">
+            <div class="font-bold text-pink-400">Escuchando...</div>
+            <div class="text-xs text-gray-400">Habla ahora, te entiendo</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="flex gap-2">
+        <button id="micBtn" onclick="toggleListening()" class="mic-btn w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0" title="Hablar con el asistente">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>
+        </button>
+        <input id="chatInput" type="text" placeholder="Escribe o habla tu pregunta..." onkeypress="if(event.key==='Enter')sendMessage()" class="flex-1 bg-white/5 border border-white/10 rounded-full px-5 py-3 text-sm outline-none focus:border-cyan-400/50 transition">
+        <button onclick="sendMessage()" class="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-cyan-400 flex items-center justify-center hover:scale-105 transition flex-shrink-0">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+      
+      <div class="mt-3 text-[10px] text-gray-500 text-center">
+        💡 Tip: Activa "Voz ON" para que el asistente te responda hablando
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-24 px-6">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-12 scroll-reveal">
+      <div class="text-cyan-400 text-sm font-bold tracking-widest mb-3">❓ PREGUNTAS FRECUENTES</div>
+      <h2 class="text-4xl md:text-5xl font-bold">Resolvemos tus <span class="gradient-text">dudas</span></h2>
+    </div>
+    
+    <div class="space-y-3">
+      <div class="faq-item card rounded-2xl scroll-reveal">
+        <button onclick="toggleFaq(this)" class="w-full p-5 flex items-center justify-between text-left">
+          <span class="font-bold">¿Realmente es gratis entrar a la agencia?</span>
+          <span class="faq-icon text-2xl text-cyan-400">+</span>
+        </button>
+        <div class="faq-answer px-5 pb-5 text-gray-400 text-sm">
+          ¡Sí! <b class="text-white">Unirse es 100% GRATIS</b>. No cobramos nada por registro, capacitación ni soporte. Nuestro modelo se basa en el éxito mutuo: tú creces, nosotros crecemos.
+        </div>
+      </div>
+      
+      <div class="faq-item card rounded-2xl scroll-reveal">
+        <button onclick="toggleFaq(this)" class="w-full p-5 flex items-center justify-between text-left">
+          <span class="font-bold">¿Cuánto puedo ganar realmente?</span>
+          <span class="faq-icon text-2xl text-cyan-400">+</span>
+        </button>
+        <div class="faq-answer px-5 pb-5 text-gray-400 text-sm">
+          Al alcanzar la meta de <b class="text-white">100K diamantes</b> en tus LIVEs, recibes pagos mensuales recurrentes de entre <b class="text-pink-400">$50 y $100 USD</b> directamente a tu cuenta de PayPal.
+        </div>
+      </div>
+      
+      <div class="faq-item card rounded-2xl scroll-reveal">
+        <button onclick="toggleFaq(this)" class="w-full p-5 flex items-center justify-between text-left">
+          <span class="font-bold">¿Qué ligas aceptan en la agencia?</span>
+          <span class="faq-icon text-2xl text-cyan-400">+</span>
+        </button>
+        <div class="faq-answer px-5 pb-5 text-gray-400 text-sm">
+          Trabajamos principalmente con creadores de las ligas <b class="text-cyan-400">D1, C y B</b>. Si estás en alguna de estas ligas, la agencia es el impulso perfecto para subir de nivel y proteger tu cuenta contra baneos.
+        </div>
+      </div>
+      
+      <div class="faq-item card rounded-2xl scroll-reveal">
+        <button onclick="toggleFaq(this)" class="w-full p-5 flex items-center justify-between text-left">
+          <span class="font-bold">¿Cómo recibo los pagos?</span>
+          <span class="faq-icon text-2xl text-cyan-400">+</span>
+        </button>
+        <div class="faq-answer px-5 pb-5 text-gray-400 text-sm">
+          Los pagos se realizan vía <b class="text-white">PayPal</b> en dólares (USD) de forma mensual, segura y con total transparencia. Sin letras pequeñas.
+        </div>
+      </div>
+      
+      <div class="faq-item card rounded-2xl scroll-reveal">
+        <button onclick="toggleFaq(this)" class="w-full p-5 flex items-center justify-between text-left">
+          <span class="font-bold">¿Me ayudan si me banean la cuenta?</span>
+          <span class="faq-icon text-2xl text-cyan-400">+</span>
+        </button>
+        <div class="faq-answer px-5 pb-5 text-gray-400 text-sm">
+          ¡Por supuesto! Contamos con <b class="text-white">soporte personalizado</b> para resolver baneos, problemas de cuenta y optimización de perfil. Tu cuenta está protegida con nosotros.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO CON WHATSAPP FUNCIONAL -->
+<section id="unirse" class="py-24 px-6 relative">
+  <div class="blob w-96 h-96 bg-pink-500 bottom-0 left-1/2 -translate-x-1/2"></div>
+  <div class="max-w-4xl mx-auto relative z-10">
+    <div class="card rounded-3xl p-8 md:p-16 text-center scroll-reveal relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-pink-500/10 via-transparent to-cyan-400/10"></div>
+      <div class="relative">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/30 text-xs mb-6">
+          <span class="live-dot"></span>
+          <span class="text-green-400 font-semibold tracking-wider">CUPOS DISPONIBLES HOY</span>
+        </div>
+        <h2 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+          ¿Listo para <span class="gradient-text">empezar a ganar</span>?
+        </h2>
+        <p class="text-gray-300 text-lg mb-4 max-w-2xl mx-auto">
+          Toca cualquiera de los botones de WhatsApp para <b class="text-white">enviar un mensaje automático</b> a nuestros asesores. ¡Se abrirá la app al instante!
+        </p>
+        <p class="text-yellow-400 text-sm mb-10 max-w-2xl mx-auto">
+          💬 Se enviará automáticamente: <b class="text-white">"Hola Agencia Planeta, soy creador de TikTok y quiero unirme para empezar a ganar"</b>
+        </p>
+        
+        <div class="grid md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+          <!-- ASESOR 1 -->
+          <div class="contact-card rounded-2xl p-6 text-left">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center">
+                <svg class="w-7 h-7 text-green-400" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              </div>
+              <div>
+                <div class="text-xs text-gray-400">ASESOR PRINCIPAL</div>
+                <div class="font-bold text-lg phone-number">+58 424-7418161</div>
+              </div>
+            </div>
+            <button onclick="sendWhatsApp('584247418161')" class="btn-whatsapp w-full px-4 py-3 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 mb-2">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              <span>Enviar mensaje por WhatsApp</span>
+            </button>
+            <button onclick="copyNumber('584247418161', this)" class="btn-copy w-full px-4 py-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-2">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              <span class="btn-text">O copiar número</span>
+            </button>
+          </div>
+          
+          <!-- ASESOR 2 -->
+          <div class="contact-card rounded-2xl p-6 text-left">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center">
+                <svg class="w-7 h-7 text-green-400" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              </div>
+              <div>
+                <div class="text-xs text-gray-400">ASESOR ALTERNATIVO</div>
+                <div class="font-bold text-lg phone-number">+58 412-9126548</div>
+              </div>
+            </div>
+            <button onclick="sendWhatsApp('584129126548')" class="btn-whatsapp w-full px-4 py-3 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 mb-2">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              <span>Enviar mensaje por WhatsApp</span>
+            </button>
+            <button onclick="copyNumber('584129126548', this)" class="btn-copy w-full px-4 py-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-2">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              <span class="btn-text">O copiar número</span>
+            </button>
+          </div>
+        </div>
+        
+        <div class="mt-8 text-xs text-gray-500">
+          🤖 Este sitio es operado por el <b class="text-white">Asistente de IA de Agencia Planeta</b> · Servicio 100% gratuito
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-white/5 py-10 px-6">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <svg width="32" height="32" viewBox="0 0 100 100" class="rounded-lg">
+        <circle cx="50" cy="50" r="48" fill="#6B5B7B"/>
+        <circle cx="50" cy="50" r="35" fill="#4A90E2"/>
+        <ellipse cx="50" cy="50" rx="35" ry="12" fill="none" stroke="#3A7BC8" stroke-width="2"/>
+        <path d="M 20 50 Q 50 30 80 50 Q 50 70 20 50" fill="#5BA0F0" opacity="0.6"/>
+        <text x="50" y="58" font-family="cursive" font-size="22" fill="#FF6B9D" text-anchor="middle" font-weight="bold">Planeta</text>
+        <rect x="30" y="62" width="40" height="8" fill="#FF6B9D" rx="2"/>
+        <text x="50" y="69" font-family="sans-serif" font-size="7" fill="#4A90E2" text-anchor="middle" font-weight="bold">Planeta</text>
+      </svg>
+      <div class="text-sm">
+        <div class="font-bold">Agencia Planeta</div>
+        <div class="text-xs text-gray-500">Asistente IA Oficial · 2026</div>
+      </div>
+    </div>
+    <div class="text-xs text-gray-500 text-center">
+      Impulsamos creadores de TikTok LIVE · Ligas D1, C y B · Pagos vía PayPal
+    </div>
+    <div class="flex gap-4 text-xs text-gray-400">
+      <a href="#beneficios" class="hover:text-cyan-400">Beneficios</a>
+      <a href="#pagos" class="hover:text-cyan-400">Pagos</a>
+      <a href="#unirse" class="hover:text-cyan-400">Unirme</a>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP BUTTON -->
+<button onclick="sendWhatsApp('584247418161')" class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-green-500 flex items-center justify-center pulse-ring hover:scale-110 transition" title="Enviar mensaje por WhatsApp">
+  <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</button>
+
+<!-- TOAST -->
+<div id="toast" class="toast">✓ Copiado al portapapeles</div>
+
+<script>
+  // ========== ENVIAR WHATSAPP ==========
+  function sendWhatsApp(phoneNumber) {
+    const message = "Hola Agencia Planeta, soy creador de TikTok y quiero unirme para empezar a ganar";
+    const encodedMessage = encodeURIComponent(message);
+    
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    let waUrl;
+    if (isMobile) {
+      waUrl = 'https://wa.me/' + phoneNumber + '?text=' + encodedMessage;
+    } else {
+      waUrl = 'https://web.whatsapp.com/send?phone=' + phoneNumber + '&text=' + encodedMessage;
+    }
+    
+    showToast('📲 Abriendo WhatsApp...');
+    
+    setTimeout(function() {
+      window.location.href = waUrl;
+    }, 300);
+  }
+  
+  // ========== COPIAR NÚMERO ==========
+  function copyNumber(number, btn) {
+    const formatted = '+' + number.replace(/(\d{2})(\d{3})(\d{3})(\d{4})/, '$1 $2-$3$4');
+    copyToClipboard(formatted);
+    
+    if (btn) {
+      btn.classList.add('copied');
+      const textEl = btn.querySelector('.btn-text');
+      const originalText = textEl.textContent;
+      textEl.textContent = '✓ ¡Copiado!';
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        textEl.textContent = originalText;
+      }, 2000);
+    }
+    
+    showToast('📋 Número copiado: ' + formatted);
+  }
+  
+  function copyToClipboard(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).catch(() => fallbackCopy(text));
+    } else {
+      fallbackCopy(text);
+    }
+  }
+  
+  function fallbackCopy(text) {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.left = '-9999px';
+    document.body.appendChild(textarea);
+    textarea.select();
+    try {
+      document.execCommand('copy');
+    } catch (e) {
+      console.error('Error al copiar', e);
+    }
+    document.body.removeChild(textarea);
+  }
+  
+  function showToast(message) {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2500);
+  }
+  
+  function scrollToContact() {
+    const target = document.getElementById('unirse');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+  
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    item.classList.toggle('active');
+  }
+  
+  // ========== VOZ: RECONOCIMIENTO (Speech-to-Text) ==========
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  let recognition = null;
+  let isListening = false;
+  let voiceResponsesEnabled = false;
+  
+  // Verificar soporte
+  if (SpeechRecognition) {
+    recognition = new SpeechRecognition();
+    recognition.lang = 'es-ES';
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    
+    recognition.onstart = function() {
+      isListening = true;
+      document.getElementById('micBtn').classList.add('listening');
+      document.getElementById('listeningIndicator').classList.remove('hidden');
+    };
+    
+    recognition.onresult = function(event) {
+      const transcript = event.results[0][0].transcript;
+      document.getElementById('chatInput').value = transcript;
+      stopListening();
+      // Enviar automáticamente después de escuchar
+      setTimeout(() => sendMessage(), 300);
+    };
+    
+    recognition.onerror = function(event) {
+      console.error('Error de reconocimiento:', event.error);
+      let errorMsg = 'Error al escuchar';
+      if (event.error === 'no-speech') errorMsg = 'No se detectó voz. Intenta de nuevo.';
+      else if (event.error === 'not-allowed') errorMsg = 'Permiso de micrófono denegado.';
+      else if (event.error === 'network') errorMsg = 'Error de red. Verifica tu conexión.';
+      showToast('🎙️ ' + errorMsg);
+      stopListening();
+    };
+    
+    recognition.onend = function() {
+      stopListening();
+    };
+  } else {
+    // Navegador no soporta reconocimiento de voz
+    document.getElementById('voiceSupportNotice').classList.remove('hidden');
+    document.getElementById('micBtn').style.opacity = '0.3';
+    document.getElementById('micBtn').style.cursor = 'not-allowed';
+    document.getElementById('micBtn').title = 'No soportado en este navegador';
+  }
+  
+  function toggleListening() {
+    if (!recognition) {
+      showToast('⚠️ Tu navegador no soporta voz. Usa Chrome o Edge.');
+      return;
+    }
+    
+    if (isListening) {
+      recognition.stop();
+    } else {
+      try {
+        recognition.start();
+      } catch (e) {
+        console.error(e);
+      }
+    }
+  }
+  
+  function stopListening() {
+    isListening = false;
+    document.getElementById('micBtn').classList.remove('listening');
+    document.getElementById('listeningIndicator').classList.add('hidden');
+  }
+  
+  // ========== VOZ: SÍNTESIS (Text-to-Speech) ==========
+  function toggleVoiceResponses() {
+    voiceResponsesEnabled = !voiceResponsesEnabled;
+    const toggle = document.getElementById('voiceToggle');
+    const text = document.getElementById('voiceToggleText');
+    
+    if (voiceResponsesEnabled) {
+      toggle.classList.add('active');
+      text.textContent = 'Voz ON';
+      // Prueba de voz
+      speakText('Voz activada. Ahora te responderé hablando.');
+    } else {
+      toggle.classList.add('active');
+      toggle.classList.remove('active');
+      text.textContent = 'Voz OFF';
+      window.speechSynthesis.cancel();
+    }
+  }
+  
+  function speakText(text) {
+    if (!voiceResponsesEnabled) return;
+    if (!('speechSynthesis' in window)) return;
+    
+    // Cancelar cualquier voz anterior
+    window.speechSynthesis.cancel();
+    
+    // Limpiar texto de HTML para la voz
+    const cleanText = text.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+    
+    const utterance = new SpeechSynthesisUtterance(cleanText);
+    utterance.lang = 'es-ES';
+    utterance.rate = 1;
+    utterance.pitch = 1;
+    utterance.volume = 1;
+    
+    // Intentar usar voz en español
+    const voices = window.speechSynthesis.getVoices();
+    const spanishVoice = voices.find(v => v.lang.startsWith('es')) || voices[0];
+    if (spanishVoice) utterance.voice = spanishVoice;
+    
+    window.speechSynthesis.speak(utterance);
+  }
+  
+  // Cargar voces (algunos navegadores las cargan async)
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.onvoiceschanged = function() {
+      // Voces disponibles
+    };
+  }
+  
+  // ========== CHAT IA ==========
+  const phone1 = '+58 424-7418161';
+  const phone2 = '+58 412-9126548';
+  
+  const responses = {
+    beneficios: "💎 Beneficios exclusivos GRATIS: Asesoría y capacitación personalizada. Participación en Batallas Oficiales. Soporte contra baneos y problemas. Comunidad de creadores para colaborar. ¡Todo para que subas de liga rápidamente!",
+    pagos: "💵 Sistema de pagos: Meta de 100 mil diamantes mensuales. Monto entre 50 y 100 dólares. Método PayPal directo. Pagos 100% seguros y transparentes.",
+    requisitos: "📋 Requisitos simples: Ganas de crecer y ser constante. Ser mayor de 18 años. Cuenta activa de PayPal. ¡Costo cero! Es 100% gratis.",
+    unirme: "🚀 ¡Excelente decisión! Toca los botones de WhatsApp para enviar un mensaje automático. Asesor 1: " + phone1 + ". Asesor 2: " + phone2 + ". Se enviará automáticamente: Hola Agencia Planeta, soy creador de TikTok y quiero unirme para empezar a ganar. Baja a la sección de contacto para tocar los botones de WhatsApp."
+  };
+  
+  const responsesHtml = {
+    beneficios: "💎 <b>Beneficios exclusivos GRATIS:</b><br>• 🎓 Asesoría y capacitación personalizada<br>• ⚔️ Participación en Batallas Oficiales<br>• 🛡️ Soporte contra baneos y problemas<br>• 🤝 Comunidad de creadores para colaborar<br><br>¡Todo para que subas de liga rápidamente!",
+    pagos: "💵 <b>Sistema de pagos:</b><br>• 🎯 Meta: <b>100K diamantes</b> mensuales<br>• 💰 Monto: entre <b class='text-pink-400'>$50 y $100 USD</b><br>• 💳 Método: PayPal directo<br>• ✅ Pagos 100% seguros y transparentes",
+    requisitos: "📋 <b>Requisitos simples:</b><br>• 🔥 Ganas de crecer y ser constante<br>• 🎂 Ser mayor de 18 años (+18)<br>• 💳 Cuenta activa de PayPal<br>• ✨ <b class='text-green-400'>¡COSTO CERO!</b> Es 100% GRATIS",
+    unirme: "🚀 ¡Excelente decisión! Toca los botones de WhatsApp para enviar un mensaje automático:<br><br>📱 <b>Asesor 1:</b> <span class='text-cyan-400 font-bold'>" + phone1 + "</span><br>📱 <b>Asesor 2:</b> <span class='text-cyan-400 font-bold'>" + phone2 + "</span><br><br>💬 Se enviará automáticamente:<br><i class='text-gray-300'>'Hola Agencia Planeta, soy creador de TikTok y quiero unirme para empezar a ganar'</i><br><br>👇 Baja a la sección de contacto para tocar los botones de WhatsApp."
+  };
+  
+  function getResponseHtml(text) {
+    const t = text.toLowerCase();
+    if (t.includes('beneficio') || t.includes('qué obtengo') || t.includes('que obtengo')) return responsesHtml.beneficios;
+    if (t.includes('pago') || t.includes('cuánto') || t.includes('cuanto') || t.includes('gano') || t.includes('ganar') || t.includes('dinero') || t.includes('diamante')) return responsesHtml.pagos;
+    if (t.includes('requisito') || t.includes('necesito') || t.includes('condicion')) return responsesHtml.requisitos;
+    if (t.includes('unir') || t.includes('entrar') || t.includes('registro') || t.includes('empezar') || t.includes('contacto') || t.includes('whatsapp') || t.includes('asesor') || t.includes('numero') || t.includes('número')) return responsesHtml.unirme;
+    if (t.includes('liga') || t.includes('d1') || t.includes('subir')) return "🎯 Si estás en <b>liga D1, C o B</b>, la agencia es el impulso perfecto para subir de nivel y proteger tu cuenta contra baneos. ¡Tenemos estrategias específicas para cada liga!";
+    if (t.includes('ban') || t.includes('problema')) return "🛡️ Contamos con <b>soporte personalizado</b> para resolver baneos, problemas de cuenta y optimización de perfil. Tu cuenta está protegida con nosotros.";
+    if (t.includes('gratis') || t.includes('cobr') || t.includes('costo') || t.includes('precio')) return "✨ ¡Sí! <b class='text-green-400'>Unirse es 100% GRATIS</b>. No cobramos nada por registro, capacitación ni soporte. Nuestro modelo se basa en el éxito mutuo.";
+    return "🤖 Soy el Asistente de IA de <b>Agencia Planeta</b>. Puedo ayudarte con:<br>• 💎 Beneficios de la agencia<br>• 💵 Sistema de pagos<br>• 📋 Requisitos de ingreso<br>• 🚀 Cómo unirme<br><br>¿Sobre cuál te gustaría saber más?";
+  }
+  
+  function getResponseText(text) {
+    const t = text.toLowerCase();
+    if (t.includes('beneficio') || t.includes('qué obtengo') || t.includes('que obtengo')) return responses.beneficios;
+    if (t.includes('pago') || t.includes('cuánto') || t.includes('cuanto') || t.includes('gano') || t.includes('ganar') || t.includes('dinero') || t.includes('diamante')) return responses.pagos;
+    if (t.includes('requisito') || t.includes('necesito') || t.includes('condicion')) return responses.requisitos;
+    if (t.includes('unir') || t.includes('entrar') || t.includes('registro') || t.includes('empezar') || t.includes('contacto') || t.includes('whatsapp') || t.includes('asesor') || t.includes('numero') || t.includes('número')) return responses.unirme;
+    if (t.includes('liga') || t.includes('d1') || t.includes('subir')) return "Si estás en liga D1, C o B, la agencia es el impulso perfecto para subir de nivel y proteger tu cuenta contra baneos. ¡Tenemos estrategias específicas para cada liga!";
+    if (t.includes('ban') || t.includes('problema')) return "Contamos con soporte personalizado para resolver baneos, problemas de cuenta y optimización de perfil. Tu cuenta está protegida con nosotros.";
+    if (t.includes('gratis') || t.includes('cobr') || t.includes('costo') || t.includes('precio')) return "¡Sí! Unirse es 100% gratis. No cobramos nada por registro, capacitación ni soporte. Nuestro modelo se basa en el éxito mutuo.";
+    return "Soy el Asistente de IA de Agencia Planeta. Puedo ayudarte con beneficios de la agencia, sistema de pagos, requisitos de ingreso, o cómo unirme. ¿Sobre cuál te gustaría saber más?";
+  }
+  
+  function addMessage(html, isUser) {
+    const chat = document.getElementById('chatMessages');
+    const div = document.createElement('div');
+    div.className = (isUser ? 'msg-user rounded-2xl rounded-tr-sm ml-auto max-w-[85%]' : 'msg-bot rounded-2xl rounded-tl-sm') + ' p-4 text-sm';
+    div.innerHTML = html;
+    chat.appendChild(div);
+    chat.scrollTop = chat.scrollHeight;
+  }
+  
+  function showTyping() {
+    const chat = document.getElementById('chatMessages');
+    const div = document.createElement('div');
+    div.id = 'typingIndicator';
+    div.className = 'msg-bot rounded-2xl rounded-tl-sm p-4 text-sm inline-flex gap-1';
+    div.innerHTML = '<span class="typing-dot w-2 h-2 bg-cyan-400 rounded-full inline-block"></span><span class="typing-dot w-2 h-2 bg-cyan-400 rounded-full inline-block"></span><span class="typing-dot w-2 h-2 bg-cyan-400 rounded-full inline-block"></span>';
+    chat.appendChild(div);
+    chat.scrollTop = chat.scrollHeight;
+  }
+  
+  function removeTyping() {
+    const t = document.getElementById('typingIndicator');
+    if (t) t.remove();
+  }
+  
+  function askQuestion(key) {
+    const questions = {
+      beneficios: '¿Qué beneficios ofrece la agencia?',
+      pagos: '¿Cuánto pagan y cómo?',
+      requisitos: '¿Cuáles son los requisitos?',
+      unirme: '¡Quiero unirme ahora!'
+    };
+    addMessage(questions[key], true);
+    showTyping();
+    setTimeout(() => {
+      removeTyping();
+      const html = responsesHtml[key];
+      addMessage(html, false);
+      speakText(responses[key]);
+    }, 900);
+  }
+  
+  function sendMessage() {
+    const input = document.getElementById('chatInput');
+    const text = input.value.trim();
+    if (!text) return;
+    addMessage(text, true);
+    input.value = '';
+    showTyping();
+    setTimeout(() => {
+      removeTyping();
+      const html = getResponseHtml(text);
+      addMessage(html, false);
+      speakText(getResponseText(text));
+    }, 1000);
+  }
+  
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+  
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const href = a.getAttribute('href');
+      if (href.startsWith('#') && href.length > 1) {
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
